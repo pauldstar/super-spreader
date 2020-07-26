@@ -16,9 +16,21 @@
     </template>
 
     <template x-if="! started()">
-        <button @click="startGame">
-            I'm ClassyD
-        </button>
+        <div class="d-flex h-100-vh align-items-center justify-content-center text-center">
+            <div>
+                <h1>Find the Super Spreader!</h1>
+                <h5>It's simple. Solve the riddle and find the super spreader!</h5>
+                <br>
+                <br>
+                <button
+                        id="btn--start"
+                        class="btn btn-outline-light btn-lg"
+                        @click="startGame"
+                >
+                    START
+                </button>
+            </div>
+        </div>
     </template>
 </div>
 
