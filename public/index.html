@@ -8,14 +8,23 @@
     <link href="css/app.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div x-data="app()">
+<div x-data="app()" x-init="mounted">
     <template x-if="started()">
-        <div class="container">
+        <div class="container h-100-vh">
             <div class="row">
-                <div class="col-12 col-md-6 border border-success pt-5">
+
+                <div id="game" class="col-12 col-lg-8 border border-success py-5">
+                    <h1 class="mb-5">Select the Super Spreader</h1>
+                    <div class="row px-2">
+                        <template x-for="suspect in questions[0].suspects">
+                            <div class="col-4 py-3 border border-info"><img :src="suspect"/></div>
+                        </template>
+                    </div>
                 </div>
-                <div class="col-12 col-md-6 border border-danger pt-5">
+
+                <div id="leaderboard" class="col-12 col-lg-4 border border-danger py-5">
                 </div>
+
             </div>
         </div>
     </template>
