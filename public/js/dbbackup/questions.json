@@ -1,6 +1,15 @@
- {
+{
   "0": {
     "suspects": [
+      "https://bigheads.io/svg?accessory=roundGlasses&body=chest&circleColor=blue&clothing=dress&clothingColor=black&eyebrows=serious&eyes=content&facialHair=none3&graphic=vue&hair=none&hairColor=white&hat=none3&hatColor=red&lashes=true&lipColor=turqoise&mask=true&mouth=open&skinTone=dark",
+      "https://bigheads.io/svg?accessory=shades&body=breasts&circleColor=blue&clothing=dress&clothingColor=white&eyebrows=leftLowered&eyes=heart&facialHair=none2&graphic=vue&hair=bob&hairColor=blue&hat=none2&hatColor=black&lashes=true&lipColor=purple&mask=true&mouth=serious&skinTone=dark",
+      "https://bigheads.io/svg?accessory=shades&body=chest&circleColor=blue&clothing=shirt&clothingColor=red&eyebrows=angry&eyes=content&facialHair=none2&graphic=react&hair=none&hairColor=brown&hat=turban&hatColor=green&lipColor=green&mask=true&mouth=open&skinTone=light",
+      "https://bigheads.io/svg?accessory=roundGlasses&body=chest&circleColor=blue&clothing=naked&clothingColor=green&eyebrows=angry&eyes=happy&facialHair=mediumBeard&graphic=react&hair=long&hairColor=brown&hat=none3&hatColor=black&lashes=true&lipColor=pink&mask=true&mouth=sad&skinTone=black",
+      "https://bigheads.io/svg?accessory=shades&body=chest&circleColor=blue&clothing=tankTop&clothingColor=blue&eyebrows=concerned&eyes=content&facialHair=none2&graphic=gatsby&hair=none&hairColor=black&hat=none2&hatColor=black&lipColor=pink&mask=true&mouth=open&skinTone=yellow",
+      "https://bigheads.io/svg?accessory=none&body=breasts&circleColor=blue&clothing=dressShirt&clothingColor=red&eyebrows=raised&eyes=heart&facialHair=none&graphic=react&hair=bun&hairColor=blonde&hat=beanie&hatColor=blue&lipColor=green&mask=true&mouth=serious&skinTone=light",
+      "https://bigheads.io/svg?accessory=tinyGlasses&body=chest&circleColor=blue&clothing=dressShirt&clothingColor=white&eyebrows=angry&eyes=simple&facialHair=none2&graphic=none&hair=short&hairColor=brown&hat=turban&hatColor=red&lipColor=green&mask=true&mouth=tongue&skinTone=light",
+      "https://bigheads.io/svg?accessory=shades&body=breasts&circleColor=blue&clothing=dress&clothingColor=white&eyebrows=concerned&eyes=dizzy&facialHair=none&graphic=gatsby&hair=bun&hairColor=blonde&hat=none&hatColor=green&lashes=true&lipColor=turqoise&mask=true&mouth=grin&skinTone=brown",
+      "https://bigheads.io/svg?accessory=tinyGlasses&body=chest&circleColor=blue&clothing=naked&clothingColor=black&eyebrows=serious&eyes=content&facialHair=none3&graphic=gatsby&hair=pixie&hairColor=pink&hat=beanie&hatColor=red&lipColor=turqoise&mask=true&mouth=openSmile&skinTone=red"
     ],
     "superSpreader": 0,
     "riddle": ""
