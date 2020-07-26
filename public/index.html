@@ -10,9 +10,14 @@
 <body>
 <div x-data="app()">
     <template x-if="started()">
-        <button @click="endGame">
-            I'm Pastor Paul
-        </button>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 border border-success pt-5">
+                </div>
+                <div class="col-12 col-md-6 border border-danger pt-5">
+                </div>
+            </div>
+        </div>
     </template>
 
     <template x-if="! started()">
