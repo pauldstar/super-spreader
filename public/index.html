@@ -4,8 +4,42 @@
     <meta charset="UTF-8">
     <title>Super Spreader</title>
     <script src="alpine-2.5.0.min.js" defer></script>
+    <link href="css/bootstrap-grid.min.css" rel="stylesheet" type="text/css">
+    <link href="css/app.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div x-data="app()">
+    <template x-if="started()">
+        <button @click="endGame">
+            I'm Pastor Paul
+        </button>
+    </template>
 
+    <template x-if="! started()">
+        <button @click="startGame">
+            I'm ClassyD
+        </button>
+    </template>
+</div>
+
+<script>
+    function app() {
+        return {
+            start: false,
+
+            startGame() {
+                this.start = true;
+            },
+
+            endGame() {
+                this.start = false;
+            },
+
+            started() {
+                return this.start === true;
+            }
+        }
+    }
+</script>
 </body>
 </html>
