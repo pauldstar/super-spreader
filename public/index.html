@@ -23,6 +23,32 @@
                 </div>
 
                 <div id="leaderboard" class="col-12 col-lg-4 border border-danger py-5">
+                    <div class="mt-5 ">
+                        <h3 class="mb-2">Leaderboard</h3>
+                        <div class="row px-2">
+                            <table class="table table-dark">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Rank</th>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Answered</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <template x-for="(key, index) in Object.keys(leaderboard)" :key="index">
+                                    <tr>
+                                        <th scope="row" x-text="index +1"></th>
+                                        <td x-text="leaderboard[key].username"></td>
+                                        <td x-text="leaderboard[key].elapsedTime"></td>
+                                        <td x-text="leaderboard[key].correctAnswers"></td>
+                                    </tr>
+                                </template>
+                                </tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
             </div>
