@@ -5,11 +5,11 @@ function app() {
         leaderboard: null,
         userInformation: {
             username: '',
-            elapsedTime: '',
+            elapsedTime: '00:00',
             correctAnswers: 0
         },
+        timerInterval: null,
         async mounted() {
-            console.log(this.questions);
             const data = await Promise.all([getLeaderboard(), getQuestions()]);
             this.leaderboard = data[0];
             this.questions = data[1];
@@ -25,6 +25,24 @@ function app() {
 
         started() {
             return this.start === true;
+        },
+        startTimer() {
+            let seconds = 0;
+            let minutes = 0;
+
+            this.timerInterval = setInterval(() => {
+                seconds++;
+                if (seconds === 59) seconds = 0;
+                if (seconds === 0) minutes++;
+                this.userInformation.elapsedTime = formatTime(minutes, seconds);
+            }, 1000)
+        },
+        stopTimer() {
+            if (this.timerInterval) clearInterval(this.timerInterval)
+        },
+        resetTimer() {
+            if (this.timerInterval) this.stopTimer();
+            this.userInformation.elapsedTime = '00:00';
         }
     }
 }

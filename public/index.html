@@ -20,6 +20,29 @@
                             <div class="col-4 py-3 border border-info"><img :src="suspect"/></div>
                         </template>
                     </div>
+
+                    <div class="row px-2">
+                        <button
+                                class="btn btn-outline-light btn-lg"
+                                @click="startTimer"
+                        >
+                            Start timer
+                        </button>
+                        <button
+                                class="btn btn-outline-light btn-lg"
+                                @click="stopTimer"
+                        >
+                            Stop timer
+                        </button>
+                        <button
+                                class="btn btn-outline-light btn-lg"
+                                @click="resetTimer"
+                        >
+                            Reset timer
+                        </button>
+
+                        <p x-text="userInformation.elapsedTime"></p>
+                    </div>
                 </div>
 
                 <div id="leaderboard" class="col-12 col-lg-4 border border-danger py-5">
@@ -75,6 +98,7 @@
 </div>
 
 <script src="js/app.js"></script>
+<script src="js/utils/timeFormater.js"></script>
 <script src="js/firebaseService.js"></script>
 
 <script src="/__/firebase/7.17.1/firebase-app.js"></script>
