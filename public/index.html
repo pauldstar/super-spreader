@@ -16,10 +16,16 @@
                 <div id="game" class="col-12 col-lg-8 border border-success py-4">
                     <h1 class="mb-4">Select the Super Spreader</h1>
                     <div class="row px-2">
-                        <template x-for="suspect in questions[0].suspects">
-                            <div class="col-4 py-3 border border-info"><img :src="suspect"/></div>
+                        <template x-for="(suspect, index)  in currentSuspects" :key="index">
+                            <div
+                                    class="col-4 py-3 border border-info"
+                                    @click="selectSuspect(index)"
+                            >
+                                <img class="suspect" :src="suspect"/>
+                            </div>
                         </template>
                     </div>
+                    <p x-text="currentRiddle"></p>
 
                     <div class="row px-2">
                         <button

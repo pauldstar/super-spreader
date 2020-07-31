@@ -3,6 +3,7 @@ function app() {
         started: false,
         questions: null,
         leaderboard: null,
+        stage: 0,
         modalOpen: false,
         modalTitle: '',
         modalMessage: '',
@@ -16,6 +17,17 @@ function app() {
             const data = await Promise.all([getLeaderboard(), getQuestions()]);
             this.leaderboard = data[0];
             this.questions = data[1];
+        get currentSuspects() {
+            return this.questions[this.stage].suspects;
+        },
+
+        get currentRiddle() {
+            return this.questions[this.stage].riddle;
+        },
+
+        get currentSuperSpreader() {
+            return this.questions[this.stage].superSpreader;
+        },
         },
 
         startGame() {
@@ -44,6 +56,7 @@ function app() {
 
         resetTimer() {
             if (this.timerInterval) this.stopTimer();
+            this.userInfo.elapsedTime = '00:00';
         }
     }
 }
