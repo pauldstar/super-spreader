@@ -4,9 +4,12 @@ function app() {
         questions: null,
         leaderboard: null,
         stage: 0,
+        selection: null,
+
         modalOpen: false,
         modalTitle: '',
         modalMessage: '',
+
         userInfo: {
             username: '',
             elapsedTime: '00:00',
@@ -28,6 +31,25 @@ function app() {
         get currentSuperSpreader() {
             return this.questions[this.stage].superSpreader;
         },
+
+        selectSuspect(selection) {
+            this.selection = selection;
+
+            let isCorrect = this.isCorrect(selection);
+            isCorrect && this.userInfo.correctAnswers++;
+
+            this.modalTitle = isCorrect ? 'Correct' : 'Wrong';
+            this.modalMessage = `You selected super spreader ${selection}`;
+            this.modalOpen = true;
+        },
+
+        isCorrect(selection) {
+            return selection === this.currentSuperSpreader;
+        },
+
+        nextStage() {
+            this.stage++;
+            this.modalOpen = false;
         },
 
         startGame() {
