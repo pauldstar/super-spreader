@@ -3,10 +3,10 @@ function app() {
         started: false,
         questions: null,
         leaderboard: null,
-        userInformation: {
         modalOpen: false,
         modalTitle: '',
         modalMessage: '',
+        userInfo: {
             username: '',
             elapsedTime: '00:00',
             correctAnswers: 0
@@ -34,15 +34,16 @@ function app() {
                 seconds++;
                 if (seconds === 59) seconds = 0;
                 if (seconds === 0) minutes++;
-                this.userInformation.elapsedTime = formatTime(minutes, seconds);
+                this.userInfo.elapsedTime = formatTime(minutes, seconds);
             }, 1000)
         },
+
         stopTimer() {
             if (this.timerInterval) clearInterval(this.timerInterval)
         },
+
         resetTimer() {
             if (this.timerInterval) this.stopTimer();
-            this.userInformation.elapsedTime = '00:00';
         }
     }
 }
