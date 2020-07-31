@@ -1,3 +1,5 @@
+//TODO - remove answers from questions table and move to another table (answers will only be verified by the cloud function
+//TODO - add pictures and riddles on the db for other questions (this is causing an error when trying to show the next question.
 function app() {
     return {
         started: false,
@@ -20,6 +22,7 @@ function app() {
             const data = await Promise.all([getLeaderboard(), getQuestions()]);
             this.leaderboard = data[0];
             this.questions = data[1];
+        },
         get currentSuspects() {
             return this.questions[this.stage].suspects;
         },
@@ -32,10 +35,10 @@ function app() {
             return this.questions[this.stage].superSpreader;
         },
 
-        selectSuspect(selection) {
+        async selectSuspect(selection) {
             this.selection = selection;
 
-            let isCorrect = this.isCorrect(selection);
+            let isCorrect = await this.isCorrect(selection);
             isCorrect && this.userInfo.correctAnswers++;
 
             this.modalTitle = isCorrect ? 'Correct' : 'Wrong';
@@ -43,13 +46,16 @@ function app() {
             this.modalOpen = true;
         },
 
-        isCorrect(selection) {
-            return selection === this.currentSuperSpreader;
+        async isCorrect(selection) {
+            const result = await verifyAnswer(this.stage, selection);
+            return result.isCorrectAnswer;
         },
 
         nextStage() {
+            console.log('next stage!');
             this.stage++;
             this.modalOpen = false;
+            console.log('next stage finsihed !');
         },
 
         startGame() {
