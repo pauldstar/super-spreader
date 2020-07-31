@@ -65,15 +65,14 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <template x-for="(key, index) in Object.keys(leaderboard)" :key="index">
-                                    <tr>
-                                        <th scope="row" x-text="index +1"></th>
-                                        <td x-text="leaderboard[key].username"></td>
-                                        <td x-text="leaderboard[key].elapsedTime"></td>
-                                        <td x-text="leaderboard[key].correctAnswers"></td>
-                                    </tr>
-                                </template>
-                                </tbody>
+                                    <template x-for="(key, index) in Object.keys(leaderboard)" :key="index">
+                                        <tr>
+                                            <th scope="row" x-text="index +1"></th>
+                                            <td x-text="leaderboard[key].username"></td>
+                                            <td x-text="leaderboard[key].elapsedTime"></td>
+                                            <td x-text="leaderboard[key].correctAnswers"></td>
+                                        </tr>
+                                    </template>
                                 </tbody>
                             </table>
                         </div>
