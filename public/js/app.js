@@ -1,6 +1,6 @@
 function app() {
     return {
-        start: false,
+        started: false,
         questions: null,
         leaderboard: null,
         userInformation: {
@@ -19,16 +19,13 @@ function app() {
         },
 
         startGame() {
-            this.start = true;
+            this.started = !this.started;
         },
 
         endGame() {
-            this.start = false;
+            this.started = false;
         },
 
-        started() {
-            return this.start === true;
-        },
         startTimer() {
             let seconds = 0;
             let minutes = 0;
