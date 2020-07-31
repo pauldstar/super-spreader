@@ -10,7 +10,7 @@
 <body>
 <div x-data="app()" x-init="mounted">
     <template x-if="started()">
-        <div class="container h-100-vh">
+        <div class="container h-100-vh"  :class="{ 'modal-open': modalOpen }">
             <div class="row">
 
                 <div id="game" class="col-12 col-lg-8 border border-success py-5">
@@ -74,6 +74,38 @@
                     </div>
                 </div>
 
+                <div
+                     class="modal fade"
+                     :class="{
+                        show: modalOpen,
+                        'd-block': modalOpen
+                    }"
+                     tabindex="-1"
+                     role="dialog"
+                     aria-hidden="true"
+                >
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-dark" x-text="modalTitle"></h5>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-dark" x-text="modalMessage"></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button
+                                    @click="nextStage"
+                                    type="button"
+                                    class="btn btn-danger"
+                                >
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div x-show="modalOpen" class="modal-backdrop fade show"></div>
             </div>
         </div>
     </template>

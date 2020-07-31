@@ -4,6 +4,9 @@ function app() {
         questions: null,
         leaderboard: null,
         userInformation: {
+        modalOpen: false,
+        modalTitle: '',
+        modalMessage: '',
             username: '',
             elapsedTime: '00:00',
             correctAnswers: 0
