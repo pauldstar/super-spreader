@@ -17,21 +17,36 @@ function app() {
             elapsedTime: '00:00',
             correctAnswers: 0
         },
+
         timerInterval: null,
+
+        currentProgress: 0,
+        progressMultiplier: 0,
+
         async mounted() {
             const data = await Promise.all([getLeaderboard(), getQuestions()]);
             this.leaderboard = data[0];
             this.questions = data[1];
+            this.calculateProgressIncrease()
         },
         get currentSuspects() {
+            if (this.isUserAtTheEnd())
+                return;
+
             return this.questions[this.stage].suspects;
         },
 
         get currentRiddle() {
+            if (this.isUserAtTheEnd())
+                return;
+
             return this.questions[this.stage].riddle;
         },
 
         get currentSuperSpreader() {
+            if (this.isUserAtTheEnd())
+                return;
+
             return this.questions[this.stage].superSpreader;
         },
 
@@ -52,10 +67,13 @@ function app() {
         },
 
         nextStage() {
-            console.log('next stage!');
+            if (this.isUserAtTheEnd())
+                return;
+
             this.stage++;
             this.modalOpen = false;
-            console.log('next stage finsihed !');
+
+            this.updateProgressBar();
         },
 
         startGame() {
@@ -82,9 +100,26 @@ function app() {
             if (this.timerInterval) clearInterval(this.timerInterval)
         },
 
+        isUserAtTheEnd() {
+            return this.stage === this.questions.length;
+        },
+
         resetTimer() {
             if (this.timerInterval) this.stopTimer();
             this.userInfo.elapsedTime = '00:00';
+        },
+
+        calculateProgressIncrease() {
+            this.progressMultiplier = 100 / this.questions.length;
+        },
+
+        updateProgressBar() {
+            //todo: not sure how to do this with alpine ( prevent doing this document.getElementById all the time)
+            this.currentProgress = this.progressMultiplier * this.stage;
+
+            const progressBarElement = document.getElementById('progress-bar');
+            progressBarElement.style.width = `${this.currentProgress}%`;
+            progressBarElement.setAttribute('aria-valuenow', this.currentProgress);
         }
     }
 }

@@ -14,7 +14,7 @@
             <div class="row">
 
                 <div id="game" class="col-12 col-lg-8 border border-success py-4">
-                    <h1 class="mb-4">Select the Super Spreader</h1>
+                    <h1 class="mb-4 text-center">Select the Super Spreader</h1>
                     <div class="row px-2">
                         <template x-for="(suspect, index)  in currentSuspects" :key="index">
                             <div
@@ -25,29 +25,25 @@
                             </div>
                         </template>
                     </div>
-                    <p x-text="currentRiddle"></p>
 
-                    <div class="row px-2">
-                        <button
-                                class="btn btn-outline-light btn-lg"
-                                @click="startTimer"
-                        >
-                            Start timer
-                        </button>
-                        <button
-                                class="btn btn-outline-light btn-lg"
-                                @click="stopTimer"
-                        >
-                            Stop timer
-                        </button>
-                        <button
-                                class="btn btn-outline-light btn-lg"
-                                @click="resetTimer"
-                        >
-                            Reset timer
-                        </button>
+                    <div class="row px-2 py-3" style=" align-items: center; justify-content: center">
+                        <p x-text="currentRiddle" class="text-center"></p>
+                    </div>
 
-                        <p x-text="userInfo.elapsedTime"></p>
+                    <div class="row px-2 flex-row" style="display: flex">
+
+                        <div class="rounded-circle border border-5 text-center question-display"
+                             x-text="stage +1">
+                        </div>
+
+                        <div class="col progress-bar-container">
+                            <div class="progress progress-height">
+                                <div id="progress-bar" class="progress-bar progress-bar-colour" role="progressbar"
+                                     aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="rounded-circle border border-5 text-center question-display"
+                             x-text="questions.length"></div>
                     </div>
                 </div>
 

@@ -24,3 +24,25 @@ body {
 .suspect:hover {
     bottom: 10px;
 }
+
+.question-display {
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    color: #5a6268;
+}
+
+.progress-bar-container {
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.progress-height {
+    height: 10px;
+}
+
+.progress-bar-colour {
+    background-color: #5fd6ff;
+}
+
