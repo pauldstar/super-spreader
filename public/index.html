@@ -80,15 +80,16 @@
                     </div>
                 </div>
 
-                <div
-                        class="modal fade"
-                        :class="{
+                <template x-if="modalOpen">
+                    <div
+                    class="modal fade"
+                    :class="{
                         show: modalOpen,
                         'd-block': modalOpen
                     }"
-                        tabindex="-1"
-                        role="dialog"
-                        aria-hidden="true"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-hidden="true"
                 >
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
@@ -120,6 +121,7 @@
                         </div>
                     </div>
                 </div>
+                </template>
 
                 <div x-show="modalOpen" class="modal-backdrop fade show"></div>
             </div>
