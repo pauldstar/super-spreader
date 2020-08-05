@@ -108,15 +108,40 @@
                                         <p class="text-dark" x-html="`Your hi-score is <b>${userInfo.hiScore}<b>`"></p>
                                     </div>
                                 </template>
+
+                                <template x-if="gameOver">
+                                    <div class="form-group">
+                                        <label for="username-input">Username</label>
+                                        <input id="username-input" x-model="userInfo.username" type="text" class="form-control" placeholder="Enter a username">
+                                        <small class="form-text text-danger" x-text="inputError"></small>
+                                    </div>
+                                </template>
+
                             </div>
                             <div class="modal-footer">
-                                <button
-                                        @click="nextStage"
-                                        type="button"
-                                        class="btn btn-danger"
-                                >
-                                    Next
-                                </button>
+                                <template x-if="gameOver">
+                                    <button
+                                            @click="saveScore"
+                                            @keydown.space.window="saveScore"
+                                            @keydown.enter.window="saveScore"
+                                            type="button"
+                                            class="btn btn-primary"
+                                    >
+                                        Save
+                                    </button>
+                                </template>
+
+                                <template x-if="! gameOver">
+                                    <button
+                                            @click="nextStage"
+                                            @keydown.space.window="nextStage"
+                                            @keydown.enter.window="nextStage"
+                                            type="button"
+                                            class="btn btn-danger"
+                                    >
+                                        Next
+                                    </button>
+                                </template>
                             </div>
                         </div>
                     </div>

@@ -12,6 +12,8 @@ function app() {
         modalTitle: '',
         modalMessage: '',
 
+        inputError: '',
+
         userInfo: {
             username: '',
             elapsedTime: '00:00',
@@ -27,6 +29,10 @@ function app() {
             const data = await Promise.all([getLeaderboard(), getQuestions()]);
             this.leaderboard = data[0];
             this.questions = data[1];
+
+        get questionsLength() {
+            // return Object.keys(this.questions).length;
+            return 2;
         },
         get currentSuspects() {
             if (this.isUserAtTheEnd())
@@ -47,6 +53,23 @@ function app() {
                 return;
 
             return this.questions[this.stage].superSpreader;
+        },
+
+        get gameOver() {
+            return this.stage === this.questionsLength;
+        },
+
+        get correctAnswers() {
+            return this.userInfo.correctAnswers;
+        },
+
+        get elapsedUnixTime() {
+            return this.userInfo.correctAnswers;
+        },
+
+        get score() {
+            return this.correctAnswers
+                && (this.correctAnswers / this.elapsedUnixTime) * 300;
         },
 
         async selectSuspect(selection) {
