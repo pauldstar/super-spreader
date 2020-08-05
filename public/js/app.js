@@ -34,24 +34,16 @@ function app() {
             // return Object.keys(this.questions).length;
             return 2;
         },
-        get currentSuspects() {
-            if (this.isUserAtTheEnd())
-                return;
 
+        get currentSuspects() {
             return this.questions[this.stage].suspects;
         },
 
         get currentRiddle() {
-            if (this.isUserAtTheEnd())
-                return;
-
             return this.questions[this.stage].riddle;
         },
 
         get currentSuperSpreader() {
-            if (this.isUserAtTheEnd())
-                return;
-
             return this.questions[this.stage].superSpreader;
         },
 
@@ -88,9 +80,6 @@ function app() {
             return result.isCorrectAnswer;
         },
 
-        nextStage() {
-            if (this.isUserAtTheEnd())
-                return;
 
             this.stage++;
             this.modalOpen = false;
@@ -125,10 +114,6 @@ function app() {
 
         stopTimer() {
             if (this.timerInterval) clearInterval(this.timerInterval)
-        },
-
-        isUserAtTheEnd() {
-            return this.stage === this.questions.length;
         },
 
         resetTimer() {
