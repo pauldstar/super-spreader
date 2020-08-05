@@ -155,8 +155,7 @@ function app() {
         },
 
         get progressStyle() {
-            let progress = this.stage * (100 / this.questionsLength);
-            return `width: ${progress}%`;
+            return `width: ${this.currentProgress}%`;
         }
     }
 }
