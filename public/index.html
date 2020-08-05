@@ -91,7 +91,17 @@
                                 <h5 class="modal-title text-dark" x-text="modalTitle"></h5>
                             </div>
                             <div class="modal-body">
-                                <p class="text-dark" x-text="modalMessage"></p>
+                                <template x-if="! gameOver">
+                                    <p class="text-dark" x-text="modalMessage"></p>
+                                </template>
+
+                                <template x-if="gameOver">
+                                    <div>
+                                        <p class="text-dark" x-text="`You correctly answered ${correctAnswers} of ${questionsLength}`"></p>
+                                        <p class="text-dark" x-html="`Your score is <b>${score}<b>`"></p>
+                                        <p class="text-dark" x-html="`Your hi-score is <b>${userInfo.hiScore}<b>`"></p>
+                                    </div>
+                                </template>
                             </div>
                             <div class="modal-footer">
                                 <button
