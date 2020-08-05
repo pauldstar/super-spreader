@@ -16,6 +16,8 @@ function app() {
             username: '',
             elapsedTime: '00:00',
             correctAnswers: 0
+            correctAnswers: 0,
+            hiScore: 0
         },
 
         timerInterval: null,
@@ -74,6 +76,12 @@ function app() {
             this.modalOpen = false;
 
             this.updateProgressBar();
+            this.updateHiScore();
+        updateHiScore() {
+            if (this.userInfo.hiScore < this.score) {
+                this.userInfo.hiScore = this.score;
+            }
+        },
         },
 
         startGame() {
