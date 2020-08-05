@@ -39,8 +39,14 @@
 
                         <div class="col progress-bar-container">
                             <div class="progress progress-height">
-                                <div id="progress-bar" class="progress-bar progress-bar-colour" role="progressbar"
-                                     aria-valuemin="0" aria-valuemax="100"></div>
+                                <div
+                                    :style="progressStyle"
+                                    class="progress-bar progress-bar-colour"
+                                    role="progressbar"
+                                    :aria-valuenow="currentProgress"
+                                    aria-valuemin="0"
+                                    aria-valuemax="100"
+                                ></div>
                             </div>
                         </div>
                         <div class="rounded-circle border border-5 text-center question-display"

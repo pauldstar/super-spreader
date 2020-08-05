@@ -22,14 +22,11 @@ function app() {
 
         timerInterval: null,
 
-        currentProgress: 0,
-        progressMultiplier: 0,
 
         async mounted() {
             const data = await Promise.all([getLeaderboard(), getQuestions()]);
             this.leaderboard = data[0];
             this.questions = data[1];
-            this.calculateProgressIncrease()
         },
         get currentSuspects() {
             if (this.isUserAtTheEnd())
@@ -75,7 +72,6 @@ function app() {
             this.stage++;
             this.modalOpen = false;
 
-            this.updateProgressBar();
             this.updateHiScore();
         updateHiScore() {
             if (this.userInfo.hiScore < this.score) {
@@ -117,17 +113,13 @@ function app() {
             this.userInfo.elapsedTime = '00:00';
         },
 
-        calculateProgressIncrease() {
-            this.progressMultiplier = 100 / this.questions.length;
+        get currentProgress() {
+            return this.stage * (100 / this.questionsLength);
         },
 
-        updateProgressBar() {
-            //todo: not sure how to do this with alpine ( prevent doing this document.getElementById all the time)
-            this.currentProgress = this.progressMultiplier * this.stage;
-
-            const progressBarElement = document.getElementById('progress-bar');
-            progressBarElement.style.width = `${this.currentProgress}%`;
-            progressBarElement.setAttribute('aria-valuenow', this.currentProgress);
+        get progressStyle() {
+            let progress = this.stage * (100 / this.questionsLength);
+            return `width: ${progress}%`;
         }
     }
 }
