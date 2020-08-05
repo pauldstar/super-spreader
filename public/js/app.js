@@ -17,7 +17,6 @@ function app() {
         userInfo: {
             username: '',
             elapsedTime: '00:00',
-            correctAnswers: 0
             correctAnswers: 0,
             hiScore: 0
         },
@@ -105,6 +104,7 @@ function app() {
             // todo: store in db
 
             this.updateHiScore();
+            this.reset();
         },
 
         updateHiScore() {
@@ -112,6 +112,14 @@ function app() {
                 this.userInfo.hiScore = this.score;
             }
         },
+
+        reset() {
+            this.started = false;
+            this.stage = 0;
+            this.selection = null;
+            this.timerInterval = null;
+            this.resetTimer();
+            this.closeModal();
         },
 
         startGame() {
