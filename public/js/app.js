@@ -70,21 +70,43 @@ function app() {
             let isCorrect = await this.isCorrect(selection);
             isCorrect && this.userInfo.correctAnswers++;
 
-            this.modalTitle = isCorrect ? 'Correct' : 'Wrong';
-            this.modalMessage = `You selected super spreader ${selection}`;
+            this.openModal(
+                isCorrect ? 'Correct' : 'Wrong',
+                `You selected super spreader ${selection}`
+            )
+        },
+
+        openModal(title, message)
+        {
+            this.modalTitle = title;
+            this.modalMessage = message;
             this.modalOpen = true;
         },
 
         async isCorrect(selection) {
             const result = await verifyAnswer(this.stage, selection);
             return result.isCorrectAnswer;
+        closeModal()
+        {
+            this.modalTitle = '';
+            this.modalMessage = '';
+            this.modalOpen = false;
         },
 
 
+        nextStage() {
             this.stage++;
-            this.modalOpen = false;
+            if (this.gameOver) return void(this.openModal('Game Over'));
+            this.closeModal();
+        },
+
+        saveScore() {
+            // todo: username validation: required, unique, alphanumeric
+            // todo: store in db
 
             this.updateHiScore();
+        },
+
         updateHiScore() {
             if (this.userInfo.hiScore < this.score) {
                 this.userInfo.hiScore = this.score;
