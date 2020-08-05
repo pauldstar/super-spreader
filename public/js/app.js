@@ -30,8 +30,7 @@ function app() {
             this.questions = data[1];
 
         get questionsLength() {
-            // return Object.keys(this.questions).length;
-            return 2;
+            return Object.keys(this.questions).length;
         },
 
         get currentSuspects() {
